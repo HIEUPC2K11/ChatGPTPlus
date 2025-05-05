@@ -8,5 +8,17 @@ module-type = http-response,script
 # Script giả lập (không thực sự unlock Plus)
 chatgpt-script = type=http-request,pattern=^https?:\/\/api\.openai\.com\/v1\/chat\/completions,script-path=https://raw.githubusercontent.com/yourusername/repo/main/chatgpt.js,enable=true
 
+[Proxy Group]
+ChatGPT-Status = select, Plus_Activated, Free
+
+[Proxy]
+Plus_Activated = http,127.0.0.1,8080
+Free = DIRECT
+
+[Rule]
+DOMAIN-SUFFIX,chat.openai.com,ChatGPT-Status
+DOMAIN-SUFFIX,openai.com,ChatGPT-Status
+DOMAIN-KEYWORD,openai,ChatGPT-Status
+FINAL,Free
 [MITM]
 hostname = api.openai.com
