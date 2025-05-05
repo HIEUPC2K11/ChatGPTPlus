@@ -1,0 +1,12 @@
+[General]
+name = ChatGPT Plus Unlocker (Demo)
+author = YourName
+update-interval = 86400
+module-type = http-response,script
+
+[Script]
+# Script giả lập (không thực sự unlock Plus)
+chatgpt-script = type=http-request,pattern=^https?:\/\/api\.openai\.com\/v1\/chat\/completions,script-path=https://raw.githubusercontent.com/yourusername/repo/main/chatgpt.js,enable=true
+
+[MITM]
+hostname = api.openai.com
